@@ -58,4 +58,10 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation("de.hdodenhof:circleimageview:3.1.0")
+    // retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+// gson converter
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
 }

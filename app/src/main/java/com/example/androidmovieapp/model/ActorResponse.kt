@@ -1,8 +1,8 @@
 package com.example.androidmovieapp.model
 
-data class MovieResponse(
+data class ActorResponse(
     val page: Int,
-    val results: List<MovieResult>,
+    val results: List<ResultX>,
     val total_pages: Int,
     val total_results: Int
 )
