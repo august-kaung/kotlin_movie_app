@@ -8,10 +8,21 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.AndroidMovieApp">
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".movie.DetailActivity"
+            android:exported="true" />
+        <activity
+            android:name=".movie.HomeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".auth.ForgotPasswordReminder"
+            android:exported="true" />
         <activity
             android:name=".auth.ForgotPassword"
             android:exported="true" />

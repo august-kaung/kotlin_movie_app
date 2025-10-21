@@ -7,6 +7,20 @@
     android:layout_height="match_parent"
     tools:context=".auth.SignUp">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="8dp"
+
+
+        android:background="#00EFE4E4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+
     <TextView
         android:id="@+id/txt_create"
         android:layout_width="wrap_content"
@@ -21,7 +35,7 @@
         app:layout_constraintVertical_bias="0.291" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnForgot"
+        android:id="@+id/btnSignUp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -35,10 +49,10 @@
         app:cornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtvForgotPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/txtvSignUpPassword" />
 
     <EditText
-        android:id="@+id/txtvForgotPassword"
+        android:id="@+id/txtvSignUpPassword"
         android:layout_width="match_parent"
         android:singleLine="true"
 
@@ -51,12 +65,12 @@
         android:padding="12dp"
         android:textColor="@color/black"
         android:textColorHint="@color/gray"
-        app:layout_constraintEnd_toEndOf="@+id/txtvForgotEmail"
-        app:layout_constraintStart_toStartOf="@+id/txtvForgotEmail"
-        app:layout_constraintTop_toBottomOf="@+id/txtvForgotEmail" />
+        app:layout_constraintEnd_toEndOf="@+id/txtvSignUptEmail"
+        app:layout_constraintStart_toStartOf="@+id/txtvSignUptEmail"
+        app:layout_constraintTop_toBottomOf="@+id/txtvSignUptEmail" />
 
     <EditText
-        android:id="@+id/txtvForgotEmail"
+        android:id="@+id/txtvSignUptEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

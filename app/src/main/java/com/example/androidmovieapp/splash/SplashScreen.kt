@@ -21,12 +21,24 @@ class SplashScreen : AppCompatActivity() {
                 android.R.anim.fade_in, android.R.anim.fade_out
             )
             finish()
-            startActivity(
-                android.content.Intent(
-                    this@SplashScreen,
-                    com.example.androidmovieapp.auth.LogIn::class.java
+            var sp = getSharedPreferences(getString(R.string.sp_name), MODE_PRIVATE)
+            var isLogin = sp.getBoolean(getString(R.string.is_log_in), false)
+            if(isLogin){
+                startActivity(
+                    android.content.Intent(
+                        this@SplashScreen,
+                        com.example.androidmovieapp.movie.HomeActivity::class.java
+                    )
                 )
-            )
+            }else{
+                startActivity(
+                    android.content.Intent(
+                        this@SplashScreen,
+                        com.example.androidmovieapp.auth.LogIn::class.java
+                    )
+                )
+            }
+
         }
 
 

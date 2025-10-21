@@ -5,8 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".auth.ForgotPassword">
-
+    tools:context=".ProfileActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -20,54 +19,71 @@
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-    <TextView
-        android:id="@+id/txt_change"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="143dp"
+        android:layout_height="148dp"
+        android:src="@drawable/pp"
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Change Your Password"
-        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.291" />
+        app:layout_constraintVertical_bias="0.255" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnForgot"
+        android:id="@+id/btnLogout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="144dp"
 
         android:paddingVertical="12dp"
-        android:text="Confirm "
+        android:text="Log out"
         android:textColor="@color/white"
         android:textSize="17dp"
         app:backgroundTint="@color/primaryColor"
         app:cornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtvForgottEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/txtvUserPassword" />
 
     <EditText
-        android:id="@+id/txtvForgottEmail"
+        android:id="@+id/txtvUserPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="92dp"
-        android:singleLine="true"
 
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/textview_bg_selector"
+        android:hint="Password"
+        android:padding="12dp"
+
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtvUserEmail" />
+
+    <EditText
+        android:id="@+id/txtvUserEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/textview_bg_selector"
         android:hint="Email Address"
         android:padding="12dp"
+
+        android:singleLine="true"
         android:textColor="@color/black"
         android:textColorHint="@color/gray"
-        app:layout_constraintEnd_toEndOf="@+id/txt_change"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="@+id/txt_change"
-        app:layout_constraintTop_toBottomOf="@+id/txt_change" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
 </androidx.constraintlayout.widget.ConstraintLayout>

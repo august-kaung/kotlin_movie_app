@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">AndroidMovieApp</string>
+    <string name="sp_name">MovieLocalDb</string>
+
+
+    <!--    Shared Preference Constant -->
+    <string name="is_log_in">isLogin</string>
 </resources>
