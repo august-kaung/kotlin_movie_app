@@ -1,3 +1,4 @@
+
 package com.example.androidmovieapp.adapter
 
 import android.view.LayoutInflater
@@ -10,46 +11,40 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.androidmovieapp.R
+import com.example.androidmovieapp.model.CastX
 import com.example.androidmovieapp.model.MovieResult
 import com.example.androidmovieapp.model.ResultX
 
 
-class ActorAdapter(private var actors: List<ResultX>, private val onItemClick: (ResultX) -> Unit) :
-    RecyclerView.Adapter<ActorAdapter.ActorViewHolder>() {
+class RelatedMovieAdapter(private var relatedMovies: List<CastX>  ):
+    RecyclerView.Adapter<RelatedMovieAdapter.RelatedMovieViewHolder>() {
 
-    inner class ActorViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class RelatedMovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imgPoster: ImageView = itemView.findViewById(R.id.imgMoviePoster)
         val txtTitle: TextView = itemView.findViewById(R.id.txtMovieTitle)
 
-        init {
-            itemView.setOnClickListener {
-                val position = adapterPosition
-                if (position != RecyclerView.NO_POSITION) {
-                    onItemClick(actors[position])
-                }
-            }
-        }
+
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActorViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RelatedMovieViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.movie_card, parent, false)
-        return ActorViewHolder(view)
+        return RelatedMovieViewHolder(view)
     }
 
-    override fun getItemCount(): Int = actors.size
+    override fun getItemCount(): Int = relatedMovies.size
 
-    override fun onBindViewHolder(holder: ActorViewHolder, position: Int) {
-        val actor = actors[position]
-        holder.txtTitle.text = actor.name
+    override fun onBindViewHolder(holder: RelatedMovieViewHolder, position: Int) {
+        val singleMovieRelated = relatedMovies[position]
+        holder.txtTitle.text = singleMovieRelated.title
         Glide.with(holder.itemView.context)
-            .load("https://image.tmdb.org/t/p/w500${actor.profile_path}")
+            .load("https://image.tmdb.org/t/p/w500${singleMovieRelated.poster_path}")
             .apply(RequestOptions().transform(RoundedCorners(20))) // 20dp corner radius
             .into(holder.imgPoster)
         holder.txtTitle.isSelected = true
     }
 
-    fun updateData(newActors: List<ResultX>) {
-        actors = newActors
+    fun updateData(newRelatedMovies: List<CastX>) {
+        relatedMovies = newRelatedMovies
         notifyDataSetChanged()
     }
 

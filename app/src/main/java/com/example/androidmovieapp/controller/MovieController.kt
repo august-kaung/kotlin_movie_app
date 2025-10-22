@@ -1,12 +1,15 @@
 package com.example.androidmovieapp.controller
 
+import com.example.androidmovieapp.model.ActorDetail
 import com.example.androidmovieapp.model.ActorResponse
+import com.example.androidmovieapp.model.CastDetails
+import com.example.androidmovieapp.model.DetailResponse
+import com.example.androidmovieapp.model.MovieOfActorResponse
 import com.example.androidmovieapp.model.MovieResponse
-import com.example.androidmovieapp.model.MovieResult
+import com.example.androidmovieapp.model.SearchResponse
 import com.example.app.controller.RetrofitClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import retrofit2.Response
 
 class MovieController {
     private val apiKey =
@@ -44,6 +47,42 @@ class MovieController {
         return withContext(Dispatchers.IO) {
             RetrofitClient.instance.getActors(
                 apiKey = apiKey, accept = accept, language = language, page = page
+            )
+        }
+    }
+    suspend fun getMovieDetails(movieId: Int): DetailResponse {
+        return withContext(Dispatchers.IO) {
+            RetrofitClient.instance.getMovieDetail(
+                apiKey = apiKey, accept = accept, language = language,  movieId = movieId
+            )
+        }
+    }
+    suspend fun getCasts(movieId: Int): CastDetails {
+        return withContext(Dispatchers.IO) {
+            RetrofitClient.instance.getMovieCredits(
+                apiKey = apiKey, accept = accept, language = language, movieId = movieId
+            )
+        }
+    }
+
+    suspend fun getSearchResult(query: String): SearchResponse {
+        return withContext(Dispatchers.IO) {
+            RetrofitClient.instance.getSearchData(
+                apiKey = apiKey, accept = accept, language = language, query = query
+            )
+        }
+    }
+    suspend fun getMoviesOfActors(actorId: Int): MovieOfActorResponse {
+        return withContext(Dispatchers.IO) {
+            RetrofitClient.instance.getMovieOfActor(
+                apiKey = apiKey, accept = accept, language = language, actorId = actorId
+            )
+        }
+    }
+    suspend fun getActorDetails(actorId: Int): ActorDetail {
+        return withContext(Dispatchers.IO) {
+            RetrofitClient.instance.getActorDetail(
+                apiKey = apiKey, accept = accept, language = language, actorId = actorId
             )
         }
     }

@@ -90,6 +90,8 @@ class LogIn : AppCompatActivity() {
                     var sp = getSharedPreferences(getString(R.string.sp_name), MODE_PRIVATE)
                     var editor = sp.edit()
                     editor.putBoolean(getString(R.string.is_log_in), true)
+                    editor.putString(getString(R.string.username), email)
+                    editor.putString(getString(R.string.password), password)
                     editor.commit()
                     startActivity(
                         android.content.Intent(

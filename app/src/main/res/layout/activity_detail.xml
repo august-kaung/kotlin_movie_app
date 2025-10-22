@@ -1,10 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
+
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:background="@color/black"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".movie.DetailActivity">
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="8dp"
+
+
+        android:background="#00EFE4E4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+
+        <!-- Wrap all content in a vertical LinearLayout -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Image -->
+            <ImageView
+                android:id="@+id/detailPosterView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="4dp"
+                android:adjustViewBounds="true"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <!-- Info Row -->
+            <LinearLayout
+                android:id="@+id/infoListView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+
+                >
+
+                <TextView
+                    android:id="@+id/txtVoteCount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/primaryColor"
+                    android:layout_weight="1"
+                    android:text="Votes: 1234" />
+
+                <TextView
+                    android:id="@+id/txtVoteAverage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/primaryColor"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:text="Rating: 8.5" />
+
+                <TextView
+                    android:id="@+id/txtRuntime"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/primaryColor"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:text="Runtime: 120 min" />
+            </LinearLayout>
+
+            <!-- Overview -->
+            <TextView
+                android:id="@+id/txtOverview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+                android:textAlignment="viewStart"
+                android:textColor="@color/primaryColor"
+
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Overview goes here..."
+
+                android:textSize="14sp" />
+
+            <!-- Movie Info -->
+            <LinearLayout
+                android:id="@+id/lvMovieInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/movie_poster_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/app_icon"
+                    app:civ_border_color="#FF000000"
+                    app:civ_border_width="2dp" />
+
+
+                <TextView
+                    android:id="@+id/txtTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/primaryColor"
+
+                    android:layout_marginBottom="4dp"
+                    android:paddingBottom="4dp"
+                    android:text="Title : Our Fault"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/primaryColor"
+
+                    android:layout_marginBottom="4dp"
+                    android:paddingBottom="4dp"
+                    android:text="Status : Released"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtGenres"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/primaryColor"
+
+                    android:layout_marginBottom="4dp"
+                    android:paddingBottom="4dp"
+                    android:text="Genres : Romance, Drama"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtCountries"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/primaryColor"
+
+                    android:layout_marginBottom="4dp"
+                    android:paddingBottom="4dp"
+                    android:text="Countries : Spain, United States of America"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtReleaseDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/primaryColor"
+
+                    android:layout_marginBottom="4dp"
+                    android:paddingBottom="4dp"
+                    android:text="Release Date : 2025-10-15"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtPopularity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/primaryColor"
+
+                    android:layout_marginBottom="4dp"
+                    android:paddingBottom="4dp"
+                    android:text="Popularity : 1005.6204"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView79"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="16dp"
+                android:text="Casts"
+
+                android:textColor="@color/primaryColor"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rvUpcoming" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvActorsOfDetail"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+
+                android:layout_marginTop="8dp"
+
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView79"
+                tools:itemCount="5"
+                tools:listitem="@layout/movie_card" />
+        </LinearLayout>
+
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

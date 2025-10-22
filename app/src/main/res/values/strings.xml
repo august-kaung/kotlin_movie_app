@@ -5,4 +5,6 @@
 
     <!--    Shared Preference Constant -->
     <string name="is_log_in">isLogin</string>
+    <string name="username">userName</string>
+    <string name="password">userPassword</string>
 </resources>

@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".ProfileActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -23,7 +24,7 @@
         android:id="@+id/profile_image"
         android:layout_width="143dp"
         android:layout_height="148dp"
-        android:src="@drawable/pp"
+        android:src="@drawable/app_icon"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

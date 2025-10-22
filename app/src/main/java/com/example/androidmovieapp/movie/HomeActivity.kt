@@ -1,5 +1,6 @@
 package com.example.androidmovieapp.movie
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -10,16 +11,19 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.androidmovieapp.ProfileActivity
 import com.example.androidmovieapp.R
 import com.example.androidmovieapp.adapter.ActorAdapter
 import com.example.androidmovieapp.adapter.MovieAdapter
+import com.example.androidmovieapp.auth.LogIn
 import com.example.androidmovieapp.controller.MovieController
 import com.example.androidmovieapp.databinding.ActivityHomeBinding
+import com.example.androidmovieapp.model.ActorDetail
 import kotlinx.coroutines.launch
 
 
 class HomeActivity : AppCompatActivity() {
-    lateinit var binding : ActivityHomeBinding
+    lateinit var binding: ActivityHomeBinding
     private val controller = MovieController()
 
     private lateinit var rvNowPlaying: RecyclerView
@@ -43,28 +47,68 @@ class HomeActivity : AppCompatActivity() {
         rvActors = binding.rvActors
 
 
-        rvNowPlaying.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        rvNowPlaying.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rvPopular.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rvUpcoming.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rvActors.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
-        popularAdapter = MovieAdapter(emptyList())
-        nowPlayingAdapter = MovieAdapter(emptyList())
-        upcomingAdapter = MovieAdapter(emptyList())
-        actorAdapter = ActorAdapter(emptyList())
+        popularAdapter = MovieAdapter(emptyList()) { selectedMovie ->
+            val intent = android.content.Intent(this, DetailActivity::class.java)
+            intent.putExtra("movie_id", selectedMovie.id)
+            startActivity(intent)
+
+        }
+        nowPlayingAdapter = MovieAdapter(emptyList()) { selectedMovie ->
+            val intent = android.content.Intent(this, DetailActivity::class.java)
+            intent.putExtra("movie_id", selectedMovie.id)
+            startActivity(intent)
+
+        }
+        upcomingAdapter = MovieAdapter(emptyList()) { selectedMovie ->
+            val intent = android.content.Intent(this, DetailActivity::class.java)
+            intent.putExtra("movie_id", selectedMovie.id)
+            startActivity(intent)
+        }
+        actorAdapter = ActorAdapter(emptyList()) { selectedActor ->
+            val intent = android.content.Intent(this, ActorMovieActivity::class.java)
+            intent.putExtra("actor_id", selectedActor.id)
+            startActivity(intent)
+
+        }
 
         rvPopular.adapter = popularAdapter
         rvNowPlaying.adapter = nowPlayingAdapter
         rvUpcoming.adapter = upcomingAdapter
         rvActors.adapter = actorAdapter
 
-        // 🔥 Auto call API like initState
+
         loadAllMovies()
+
+        binding.imgProfile.setOnClickListener {
+
+
+            val intent = Intent(this, ProfileActivity::class.java)
+
+            startActivity(intent)
+
+
+        }
+        binding.imgSearch.setOnClickListener {
+
+
+            val intent = Intent(this, SearchActivity::class.java)
+
+            startActivity(intent)
+
+
+        }
 
 
         setContentView(binding.root)
 
     }
+
     private fun loadAllMovies() {
         lifecycleScope.launch {
             try {
@@ -76,7 +120,7 @@ class HomeActivity : AppCompatActivity() {
                 popularAdapter.updateData(popular.results ?: emptyList())
                 nowPlayingAdapter.updateData(nowPlaying.results ?: emptyList())
                 upcomingAdapter.updateData(upcoming.results ?: emptyList())
-                actorAdapter.updateData( actorsg.results ?: emptyList())
+                actorAdapter.updateData(actorsg.results ?: emptyList())
 
             } catch (e: Exception) {
                 e.printStackTrace()

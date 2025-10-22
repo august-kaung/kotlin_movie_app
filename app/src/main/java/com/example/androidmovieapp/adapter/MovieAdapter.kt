@@ -11,12 +11,22 @@ import com.bumptech.glide.Glide
 import com.example.androidmovieapp.R
 import com.example.androidmovieapp.model.MovieResult
 
-class MovieAdapter(private var movies: List<MovieResult>) :
+class MovieAdapter(private var movies: List<MovieResult>,private val onItemClick: (MovieResult) -> Unit) :
     RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
-    inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class MovieViewHolder(itemView: View  ) : RecyclerView.ViewHolder(itemView) {
         val imgPoster: ImageView = itemView.findViewById(R.id.imgMoviePoster)
         val txtTitle: TextView = itemView.findViewById(R.id.txtMovieTitle)
+
+        init {
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    onItemClick(movies[position])
+                }
+            }
+        }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
@@ -32,6 +42,7 @@ class MovieAdapter(private var movies: List<MovieResult>) :
         Glide.with(holder.itemView.context)
             .load("https://image.tmdb.org/t/p/w500${movie.poster_path}")
             .into(holder.imgPoster)
+        holder.txtTitle.isSelected=true
     }
 
     fun updateData(newMovies: List<MovieResult>) {

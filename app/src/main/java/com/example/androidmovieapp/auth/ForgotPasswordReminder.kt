@@ -16,7 +16,7 @@ class ForgotPasswordReminder : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityForgotPasswordReminderBinding.inflate(layoutInflater)
 
-        //? Push replacement to Login Activity
+        //? Push replacement to Login Activity and take this as last ( not pure push replacement )
         binding.btnReLogin.setOnClickListener {
             val intent = Intent(this, LogIn::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP

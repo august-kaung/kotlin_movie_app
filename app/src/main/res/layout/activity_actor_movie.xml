@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".movie.ActorMovieActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="8dp"
+
+
+        android:background="#00EFE4E4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <LinearLayout
+        android:id="@+id/lvActorMovieInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/actor_poster_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"
+
+            android:src="@drawable/app_icon"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp" />
+
+        <TextView
+            android:id="@+id/actor_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="4dp"
+
+            android:paddingBottom="4dp"
+            android:text="Name : Our Fault"
+            android:textColor="@color/primaryColor"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/actor_bd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+
+            android:paddingBottom="4dp"
+            android:text="Date of Birth : Released"
+            android:textColor="@color/primaryColor"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/actor_bp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+
+            android:paddingBottom="4dp"
+            android:text="Place of Birth : Released"
+            android:textColor="@color/primaryColor"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/actor_bio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+
+            android:paddingBottom="4dp"
+            android:text="Biography : Romance, Drama"
+            android:textColor="@color/primaryColor"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/actor_popularity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+
+            android:paddingBottom="4dp"
+            android:text="Popularity : Spain, United States of America"
+            android:textColor="@color/primaryColor"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+
+        android:text="Related Movies"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lvActorMovieInfo" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_related_movies"
+            android:layout_width="384dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+
+            android:layout_marginEnd="276dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            tools:itemCount="5"
+            tools:listitem="@layout/movie_card" />
+
+    </LinearLayout>
+</ScrollView>
