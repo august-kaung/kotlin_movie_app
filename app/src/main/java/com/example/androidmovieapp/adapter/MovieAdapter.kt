@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.androidmovieapp.R
 import com.example.androidmovieapp.model.MovieResult
 
-class MovieAdapter(private var movies: List<MovieResult>,private val onItemClick: (MovieResult) -> Unit) :
+class MovieAdapter(private var movies: MutableList<MovieResult>,private val onItemClick: (MovieResult) -> Unit) :
     RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     inner class MovieViewHolder(itemView: View  ) : RecyclerView.ViewHolder(itemView) {
@@ -45,8 +45,14 @@ class MovieAdapter(private var movies: List<MovieResult>,private val onItemClick
         holder.txtTitle.isSelected=true
     }
 
-    fun updateData(newMovies: List<MovieResult>) {
-        movies = newMovies
+    fun updateData(newMovies: MutableList<MovieResult>) {
+        movies.clear()
+        movies.addAll(newMovies)
         notifyDataSetChanged()
+    }
+    fun appendData(newMovies: List<MovieResult>) {
+        val startPosition = movies.size
+        movies.addAll(newMovies)
+        notifyItemRangeInserted(startPosition, newMovies.size)
     }
 }
